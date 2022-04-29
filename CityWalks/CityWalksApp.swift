@@ -9,15 +9,15 @@
 import SwiftUI
 
 @main
+
 struct CityWalksApp: App {
     var body: some Scene {
         WindowGroup {
-            /*
+            
             let weatherService = WeatherService()
             let viewModel = WeatherViewModel(weatherService: weatherService)
             
-            */
-            ContentView(/*viewModel: viewModel*/)
+            ContentView(viewModel: viewModel)
         }
     }
 }

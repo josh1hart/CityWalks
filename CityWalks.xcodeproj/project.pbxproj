@@ -18,6 +18,8 @@
 		AF0B97C727E4C5CA00703A81 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0B97C627E4C5CA00703A81 /* WeatherViewModel.swift */; };
 		AF12F07128005F5B00562712 /* PersonalWalks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12F07028005F5A00562712 /* PersonalWalks.swift */; };
 		AF8C402927EE061F002FE9F8 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = AF8C402827EE061F002FE9F8 /* SwiftUICharts */; };
+		AF962EFC281C27B8003878A6 /* ContentViewWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */; };
+		AF962EFE281C3457003878A6 /* NavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF962EFD281C3457003878A6 /* NavigationModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		AF0B97C427E4C44000703A81 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		AF0B97C627E4C5CA00703A81 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		AF12F07028005F5A00562712 /* PersonalWalks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalWalks.swift; sourceTree = "<group>"; };
+		AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewWeather.swift; sourceTree = "<group>"; };
+		AF962EFD281C3457003878A6 /* NavigationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +110,10 @@
 				AF0B97BF27E4C1E800703A81 /* Info.plist */,
 				AF0B979527E4AEAA00703A81 /* CityWalksApp.swift */,
 				AF0B979727E4AEAA00703A81 /* ContentView.swift */,
+				AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */,
 				AF12F07028005F5A00562712 /* PersonalWalks.swift */,
 				AF0B97C027E4C2AA00703A81 /* WeatherService.swift */,
+				AF962EFD281C3457003878A6 /* NavigationModifier.swift */,
 				AF0B97C627E4C5CA00703A81 /* WeatherViewModel.swift */,
 				AF0B97C427E4C44000703A81 /* Weather.swift */,
 				AF0B979927E4AEAB00703A81 /* Assets.xcassets */,
@@ -278,7 +284,9 @@
 			files = (
 				AF0B97C127E4C2AA00703A81 /* WeatherService.swift in Sources */,
 				AF0B97C727E4C5CA00703A81 /* WeatherViewModel.swift in Sources */,
+				AF962EFE281C3457003878A6 /* NavigationModifier.swift in Sources */,
 				AF12F07128005F5B00562712 /* PersonalWalks.swift in Sources */,
+				AF962EFC281C27B8003878A6 /* ContentViewWeather.swift in Sources */,
 				AF0B979827E4AEAA00703A81 /* ContentView.swift in Sources */,
 				AF0B979627E4AEAA00703A81 /* CityWalksApp.swift in Sources */,
 				AF0B97C527E4C44100703A81 /* Weather.swift in Sources */,

@@ -5,8 +5,6 @@
 //  Created by Josh Hart on 18/03/2022.
 //
 
-
-/*
 import Foundation
 
 public struct Weather {
@@ -22,4 +20,3 @@ public struct Weather {
         iconName = response.weather.first?.iconName ?? ""
     }
 }
-*/

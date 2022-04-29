@@ -5,7 +5,6 @@
 //  Created by Josh Hart on 18/03/2022.
 //
 
-/*
 import Foundation
 
 private let defaultIcon = ""
@@ -40,5 +39,3 @@ public class WeatherViewModel: ObservableObject {
         }}
     }
 }
-
-*/

@@ -4,7 +4,6 @@
 //
 //  Created by Josh Hart on 18/03/2022.
 //
-/*
 
 import Foundation
 import CoreLocation
@@ -70,6 +69,3 @@ struct APIWeather: Decodable{
         case iconName = "main"
     }
 }
-
-
-*/

@@ -17,9 +17,25 @@ struct ContentView: View {
     @State var show = false
     @State private var showNavView = false
     @State private var showModalView = false
-     
+    @ObservedObject var viewModel: WeatherViewModel
     
-    init() {
+    /*
+    let navBar = self.navigationController!.navigationBar
+
+    let standardAppearance = UINavigationBarAppearance()
+    standardAppearance.configureWithOpaqueBackground()
+    standardAppearance.backgroundImage = backImageForDefaultBarMetrics
+
+    let compactAppearance = standardAppearance.copy()
+    compactAppearance.backgroundImage = backImageForLandscapePhoneBarMetrics
+
+    navBar.standardAppearance = standardAppearance
+    navBar.scrollEdgeAppearance = standardAppearance
+    navBar.compactAppearance = compactAppearance
+    */
+    
+    /*
+    public init(viewModel: WeatherViewModel) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.systemBackground]
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.systemBackground]
@@ -29,7 +45,10 @@ struct ContentView: View {
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().tintColor = UIColor.systemBackground
+        
+        @ObservedObject var viewModel: WeatherViewModel
     }
+    */
     
     /*
     init(){
@@ -45,16 +64,24 @@ struct ContentView: View {
             ZStack {
                 Color(red: 0.228, green: 0.228, blue: 0.228).edgesIgnoringSafeArea(.all)
                 ScrollView {
-                    Text(/*viewModel.cityName*/ "Test")
+                    Text(viewModel.cityName)
                         .foregroundColor(.white)
                         .padding(.top, 5.0)
-                    Text("Hello, world!")
                         .foregroundColor(.white)
-                        .navigationBarTitle("[City] Walks")/*("\(viewModel.cityName) Walks")*/
+                        
                         .environment(\.colorScheme, .dark)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                Menu {
+                                Button(action: {
+                                    navigateTo = AnyView (PersonalWalks())
+                                    isActive = true
+                                }, label: {
+                                    Label(
+                                        title: { Text("PersonalWalks") },
+                                        icon: { Image(systemName: "person") }
+                                    )
+                                })
+                                /*Menu {
                                     Button(action: {
                                         navigateTo = AnyView (PersonalWalks())
                                         isActive = true
@@ -79,7 +106,7 @@ struct ContentView: View {
                                         icon: {Image(systemName: "plus")}
                                         
                                     )
-                                }
+                                }*/
                                 .background(
                                     NavigationLink(destination: self.navigateTo, isActive: $isActive) {
                                         //EmptyView()
@@ -99,7 +126,7 @@ struct ContentView: View {
                                 self.show.toggle()
                         }
                         VStack{
-                            Text("Bristol")
+                            Text((viewModel.cityName))
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .frame(width: 100.0, height: 5.0)
@@ -168,8 +195,10 @@ struct ContentView: View {
                                  dropShadow: false, //removes drop shadow
                                  valueSpecifier: "%.0f" //removes .0 values
                     ).padding(.vertical, 60.0).rotationEffect(.degrees(90))
-                }
+                }.onAppear(perform: viewModel.refresh)
             }
+            .navigationBarColor(.gray, textColor: .white)
+            .navigationBarTitle("\(viewModel.cityName) Walks")
         }
     }
 }
@@ -177,7 +206,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(/*viewModel: WeatherViewModel(weatherService: WeatherService())*/)
+        ContentView(viewModel: WeatherViewModel(weatherService: WeatherService()))
     }
 }
 
