@@ -64,7 +64,7 @@ struct ContentView: View {
             ZStack {
                 Color(red: 0.228, green: 0.228, blue: 0.228).edgesIgnoringSafeArea(.all)
                 ScrollView {
-                    Text(viewModel.cityName)
+                    Text(" ")
                         .foregroundColor(.white)
                         .padding(.top, 5.0)
                         .foregroundColor(.white)
@@ -126,7 +126,7 @@ struct ContentView: View {
                                 self.show.toggle()
                         }
                         VStack{
-                            Text((viewModel.cityName))
+                            Text(viewModel.cityName)
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .frame(width: 100.0, height: 5.0)
@@ -146,13 +146,13 @@ struct ContentView: View {
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack {
                             BarChartView(data: ChartData(values: [
-                                ("Mon", 558),
-                                ("Tue", 732),
-                                ("Wed", 844),
-                                ("Thur", 283),
-                                ("Fri", 150),
-                                ("Sat", 342),
-                                ("Sun", 820),
+                                ("Mon", 5508),
+                                ("Tue", 7320),
+                                ("Wed", 8044),
+                                ("Thur", 2803),
+                                ("Fri", 1050),
+                                ("Sat", 3402),
+                                ("Sun", 8200),
                             ]),
                                          title: "Daily Steps", // name of chart
                                          style: Styles.barChartStyleNeonBlueLight, //color style
@@ -162,7 +162,7 @@ struct ContentView: View {
                             ).padding(.top, 20.0)
                                 .padding(.trailing,10.0)
                             //line chart
-                            LineChartView(data: [12,32,21,24,23,19],
+                            LineChartView(data: [0,104,240,204,230,190],
                                           title: "Hourly Steps",
                                           style: Styles.barChartStyleNeonBlueLight, //color style
                                           form: ChartForm.extraLarge, // decides size of slide
