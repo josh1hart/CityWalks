@@ -176,10 +176,167 @@ struct ContentView: View {
 
                     
                     
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis vestibulum turpis eu interdum. Vivamus vel fermentum nisl. Donec quis felis nec eros pretium vulputate. Proin rutrum ullamcorper risus, eget suscipit odio sollicitudin id. Sed id libero convallis, viverra neque et, venenatis ex. Suspendisse ornare, arcu nec eleifend blandit, velit erat varius est, quis ornare mi eros in erat." /* Cras vestibulum, velit quis mattis varius, dolor velit iaculis tortor, id tempor elit dolor ac leo. In at mattis nisi, id lobortis felis. Etiam iaculis consequat sagittis. Nullam vulputate, turpis vel congue viverra, tellus enim auctor risus, vitae tincidunt urna est at leo. Sed eu malesuada urna. Integer sit amet augue id elit efficitur consequat eget et mi.Nunc malesuada est id mi congue tristique. Nulla sed convallis est. Proin vel elementum lectus, at lacinia augue. Donec ornare laoreet ante efficitur feugiat. Integer tincidunt orci neque, quis iaculis metus hendrerit non. Sed sagittis ante vitae blandit molestie. Etiam pellentesque enim in posuere interdum. Sed et nunc ac metus vestibulum eleifend. Sed iaculis ligula elit, ut cursus dolor euismod quis. Cras sit amet magna porta, mollis ex eget, mattis diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus eu maximus dolor. Duis ornare hendrerit augue, ac gravida ante rutrum id. Nulla lorem diam, fermentum id quam vel, mattis condimentum justo. Nulla in tellus sed tortor aliquam interdum eget at turpis. Donec eu consequat odio. Suspendisse a arcu hendrerit, malesuada nulla eu, placerat urna. Praesent hendrerit condimentum dolor in efficitur. Maecenas nec ipsum eu lacus tristique ultricies. Etiam sit amet viverra felis. Donec dapibus finibus dui vitae luctus. Donec in mollis sapien. Vestibulum iaculis arcu quis venenatis tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus ac diam a purus lacinia auctor at ac sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non ligula sed ante sagittis aliquam. Aliquam in commodo neque, id molestie nisl. Vestibulum auctor augue lacinia, semper turpis eu, rhoncus sapien. Etiam viverra condimentum erat, eu ornare turpis feugiat eget. Nulla aliquam, elit commodo congue tincidunt, ante ligula iaculis orci, vel gravida turpis erat cursus mauris. Nam neque nibh, ullamcorper nec maximus in, porttitor id nisl. Donec ullamcorper eros interdum, ultricies nisi faucibus, pharetra arcu. Maecenas nec justo molestie, fermentum diam non, dictum enim. Nunc pretium ligula sit amet dui consequat accumsan. Quisque vel arcu in sem mattis accumsan efficitur ut velit. Pellentesque molestie neque nisi, sed ornare ante efficitur ut. Donec nulla erat, molestie a ornare vitae, bibendum sed erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed tristique tristique ipsum, sed laoreet velit consectetur in. Vivamus vitae elit ultricies, aliquam dolor sed, sollicitudin ligula. Donec eget quam ultricies, vulputate felis non, ullamcorper nunc. Pellentesque eget urna lacinia, vulputate metus id, feugiat nisi. Cras ligula turpis, rhoncus non ornare vel, efficitur nec quam."*/)
+                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis vestibulum turpis eu interdum. Vivamus vel fermentum nisl. Donec quis felis nec eros pretium vulputate. Proin rutrum ullamcorper risus, eget suscipit odio sollicitudin id. Sed id libero convallis, viverra neque et, venenatis ex. Suspendisse ornare, arcu nec eleifend blandit, velit erat varius est, quis ornare mi eros in erat.")
                         .foregroundColor(Color.white)
                         .padding()
                     
+                    HStack{
+                        VStack(alignment: .leading){
+                                Text("London").fontWeight(.bold).foregroundColor(.white).padding(.vertical, 5)
+                                Text("Bristol").fontWeight(.bold).foregroundColor(.white).padding(.vertical, 5)
+                                Text("Bath").fontWeight(.bold).foregroundColor(.white).padding(.vertical, 5)
+                                Text("Newquay").fontWeight(.bold).foregroundColor(.white).padding(.bottom, 5)
+                                Text("Edinbourgh").fontWeight(.bold).foregroundColor(.white).padding(.top, 5)
+                                Text("Cardiff").fontWeight(.bold).foregroundColor(.white).padding(.vertical, 5)
+                                Text("Newport").fontWeight(.bold).foregroundColor(.white).padding(.vertical, 5)
+                                Text("Swindon").fontWeight(.bold).foregroundColor(.white).padding(.vertical, 5)
+                        }
+                        VStack{
+                            ZStack(alignment: .leading) {
+                                Capsule().frame(width: 250, height: 30)
+                                    .foregroundColor(Color.white)
+                                //fill
+                                Capsule().frame(width: 200, height: 30)
+                                    .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                            }
+                            
+                            ZStack(alignment: .leading) {
+                                Capsule().frame(width: 250, height: 30)
+                                    .foregroundColor(Color.white)
+                                //fill
+                                Capsule().frame(width: 189, height: 30)
+                                    .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                            }
+                            ZStack(alignment: .leading) {
+                                Capsule().frame(width: 250, height: 30)
+                                    .foregroundColor(Color.white)
+                                //fill
+                                Capsule().frame(width: 140, height: 30)
+                                    .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                            }
+                            ZStack(alignment: .leading) {
+                                Capsule().frame(width: 250, height: 30)
+                                    .foregroundColor(Color.white)
+                                //fill
+                                Capsule().frame(width: 120, height: 30)
+                                    .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                            }
+                            ZStack(alignment: .leading) {
+                                Capsule().frame(width: 250, height: 30)
+                                    .foregroundColor(Color.white)
+                                //fill
+                                Capsule().frame(width: 97, height: 30)
+                                    .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                            }
+                            
+                            ZStack(alignment: .leading) {
+                                Capsule().frame(width: 250, height: 30)
+                                    .foregroundColor(Color.white)
+                                
+                                Capsule().frame(width: 85, height: 30)
+                                    .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                            }
+                            ZStack(alignment: .leading) {
+                                Capsule().frame(width: 250, height: 30)
+                                    .foregroundColor(Color.white)
+                                //fill
+                                Capsule().frame(width: 75, height: 30)
+                                    .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                            }
+                            ZStack(alignment: .leading) {
+                                Capsule().frame(width: 250, height: 30)
+                                    .foregroundColor(Color.white)
+                                //fill
+                                Capsule().frame(width: 50, height: 30)
+                                    .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                            }
+                        }
+                    }
+                        
+
+                    
+                    
+                    
+                    
+                    HStack {
+                        //caps here
+                        VStack(alignment: .leading) {
+                            VStack{
+                                HStack {
+                                    Text("London").fontWeight(.bold).foregroundColor(.white)
+                                    ZStack(alignment: .leading) {
+                                        Capsule().frame(width: 250, height: 30)
+                                            .foregroundColor(Color.white)
+                                        
+                                        Capsule().frame(width: 125, height: 30)
+                                            .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                                    }
+                                }
+                            }
+                            VStack{
+                                HStack {
+                                    Text("Bristol").fontWeight(.bold).foregroundColor(.white)
+                                    ZStack(alignment: .leading) {
+                                        Capsule().frame(width: 225, height: 30)
+                                            .foregroundColor(Color.white)
+                                        
+                                        Capsule().frame(width: 125, height: 30)
+                                            .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                                    }
+                                }
+                            }
+                            VStack{
+                                    HStack {
+                                        Text("Cardiff").fontWeight(.bold).foregroundColor(.white)
+                                        ZStack(alignment: .leading) {
+                                            Capsule().frame(width: 225, height: 30)
+                                                .foregroundColor(Color.white)
+                                            
+                                            Capsule().frame(width: 125, height: 30)
+                                                .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                                        }
+                                    }
+                                }
+                            VStack{
+                                HStack {
+                                    Text("Bath").fontWeight(.bold).foregroundColor(.white)
+                                    ZStack(alignment: .leading) {
+                                        Capsule().frame(width: 225, height: 30)
+                                            .foregroundColor(Color.white)
+                                        
+                                        Capsule().frame(width: 125, height: 30)
+                                            .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                                    }
+                                }
+                            }
+                            VStack(alignment: .leading){
+                                HStack{
+                                    Text("Southhampton").fontWeight(.bold).foregroundColor(.white)
+                                    ZStack(alignment: .leading) {
+                                        Capsule().frame(width: 225, height: 30)
+                                            .foregroundColor(Color.white)
+                                        
+                                        Capsule().frame(width: 125, height: 30)
+                                            .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                                    }
+                                }
+                            }
+                            VStack{
+                                HStack {
+                                    Text("Newquay").fontWeight(.bold).foregroundColor(.white).padding(.trailing, 10)
+                                    ZStack(alignment: .leading) {
+                                        Capsule().frame(width: 225, height: 30)
+                                            .foregroundColor(Color.white)
+                                        
+                                        Capsule().frame(width: 125, height: 30)
+                                            .foregroundColor(Color(red: 0.349, green: 0.893, blue: 0.926))
+                                    }
+                                }
+                            }
+                        }.padding(.top, 24)
+                    }
+                    
+                    /*
                     BarChartView(data: ChartData(values: [
                         ("Bristol", 20000200),
                         ("Bath", 18000200),
@@ -194,7 +351,7 @@ struct ContentView: View {
                                  form: ChartForm.extraLarge, // decides size of slide
                                  dropShadow: false, //removes drop shadow
                                  valueSpecifier: "%.0f" //removes .0 values
-                    ).padding(.vertical, 60.0).rotationEffect(.degrees(90))
+                    ).padding(.vertical, 60.0).rotationEffect(.degrees(90))*/
                 }.onAppear(perform: viewModel.refresh)
             }
             .navigationBarColor(.gray, textColor: .white)

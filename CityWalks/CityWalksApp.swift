@@ -9,7 +9,6 @@
 import SwiftUI
 
 @main
-
 struct CityWalksApp: App {
     var body: some Scene {
         WindowGroup {
