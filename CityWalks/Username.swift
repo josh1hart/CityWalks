@@ -8,6 +8,11 @@
 import SwiftUI
 import UIKit
 
+/*
+@MainActor class User: ObservableObject {
+    @Published var name = "Test"
+}
+*/
 
 struct Username: View {
     @State public var username: String = ""
@@ -18,12 +23,8 @@ struct Username: View {
     @State private var showModalView = false
     @ObservedObject var viewModel: WeatherViewModel
 
-    
-    //@StateObject var info = UserInfo() test
+    //@EnvironmentObject var user: User
 
-    //@EnvironmentObject var info: UserInfo
-    //internal init ()
-    
     var body: some View {
             NavigationView{
                 ZStack {
@@ -80,10 +81,10 @@ struct Username: View {
                         }
                         */
                         
-                    }
-                    .navigationBarColor(.gray, textColor: .white)
+                    }//.environmentObject(user)
+                    .navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
                     .navigationBarTitle("Username")
-                    .navigationBarHidden(false)
+                    .navigationBarHidden(true)
                 }
             }
     }

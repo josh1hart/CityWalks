@@ -60,6 +60,8 @@ struct CityWalks: View {
     @State private var navigateTo: AnyView?
     @State private var isActive = false
     
+    //let chartStyle = ChartStyle(backgroundColor: Color.black, accentColor: Colors.OrangeStart, secondGradientColor: Colors.OrangeEnd, chartFormSize: ChartForm.medium, textColor: Color.white, legendTextColor: Color.white )
+    
     var body: some View {
         //NavigationView{
             ZStack {
@@ -69,7 +71,6 @@ struct CityWalks: View {
                         .foregroundColor(.white)
                         .padding(.top, 5.0)
                         .foregroundColor(.white)
-                        
                         .environment(\.colorScheme, .dark)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
@@ -117,7 +118,12 @@ struct CityWalks: View {
                     ZStack {
                         Circle()
                             .trim(from: show ? 0.5 : 0.25, to: 1) //0.1 = closer to 100 percent
-                            .stroke(Color(red: 0.438, green: 0.862, blue: 1.0), style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                            //.strokeBorder(
+                                    //AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center, startAngle: .zero, endAngle: .degrees(360)),
+                                    //lineWidth: 50
+                                //)
+                            //.stroke(Color(red: 0.438, green: 0.862, blue: 1.0), style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                            .stroke(AngularGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001), Color(red: 0.437, green: 0.911, blue: 1.001)]), center: .center, startAngle: .zero, endAngle: .degrees(360)), style: StrokeStyle(lineWidth: 15, lineCap: .round, lineJoin: .round))
                             .rotationEffect(.degrees(90))
                         .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
                             .frame(width: 250,height: 250)
@@ -142,7 +148,8 @@ struct CityWalks: View {
                         Text("1,040")
                             .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.652))
                             .padding(.top, 165.0)
-                    }
+                    }.padding(.bottom, 20.0)
+                        .padding(.top, 5.0)
                     //Bar Chart
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack {
@@ -177,7 +184,7 @@ struct CityWalks: View {
 
                     
                     
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis vestibulum turpis eu interdum. Vivamus vel fermentum nisl. Donec quis felis nec eros pretium vulputate. Proin rutrum ullamcorper risus, eget suscipit odio sollicitudin id. Sed id libero convallis, viverra neque et, venenatis ex. Suspendisse ornare, arcu nec eleifend blandit, velit erat varius est, quis ornare mi eros in erat.")
+                    Text("Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves steplike movement, including walking, running, stair-climbing, cross- country skiing, and even movement as you go about your daily chores.")
                         .foregroundColor(Color.white)
                         .padding()
 
@@ -210,8 +217,10 @@ struct CityWalks: View {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 200, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 210, height: 30)
+                                        //.foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
                                         //.clipShape(Capsule())
                                     Text("20,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
@@ -220,32 +229,36 @@ struct CityWalks: View {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 189, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 180, height: 30)
                                     Text("19,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 140, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 170, height: 30)
                                     Text("15,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 120, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 150, height: 30)
                                     Text("13,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 97, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 130, height: 30)
                                     Text("12,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 
@@ -253,24 +266,27 @@ struct CityWalks: View {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 85, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 120, height: 30)
                                     Text("10,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 75, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 100, height: 30)
                                     Text("9,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 50, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 70, height: 30)
                                     Text("6,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                             }
@@ -297,7 +313,7 @@ struct CityWalks: View {
                                  valueSpecifier: "%.0f" //removes .0 values
                     ).padding(.vertical, 60.0).rotationEffect(.degrees(90))*/
                 }.onAppear(perform: viewModel.refresh)
-            }.navigationBarColor(.gray, textColor: .white)
+            }.navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
                 .navigationBarTitle("\(viewModel.cityName) Walks")
                 //.navigationBarHidden(true)
         //}

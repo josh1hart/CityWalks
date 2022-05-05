@@ -23,11 +23,9 @@ struct ContentView: View {
     @State private var navigateTo: AnyView?
     @State private var isActive = false
     
-    
     //Username Global Var
-    //@StateObject var info = UserInfo()
     
-    
+    //@StateObject var UserInfo = UserInfo()
     
     var body: some View {
         Username(viewModel: WeatherViewModel(weatherService: WeatherService()))

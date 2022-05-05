@@ -47,7 +47,7 @@ struct PersonalWalks: View {
     
     var body: some View {
             ZStack {
-                Color(red: 0.228, green: 0.228, blue: 0.228).edgesIgnoringSafeArea(.all)
+                Color(red: 0.165, green: 0.165, blue: 0.165).edgesIgnoringSafeArea(.all)
                 ScrollView {
                     Text(" ")
                         .foregroundColor(.white)
@@ -80,7 +80,12 @@ struct PersonalWalks: View {
                     ZStack {
                         Circle()
                             .trim(from: show ? 0.5 : 0.25, to: 1) //0.1 = closer to 100 percent
-                            .stroke(Color(red: 0.349, green: 0.893, blue: 0.926), style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                            //.strokeBorder(
+                                    //AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center, startAngle: .zero, endAngle: .degrees(360)),
+                                    //lineWidth: 50
+                                //)
+                            //.stroke(Color(red: 0.438, green: 0.862, blue: 1.0), style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                            .stroke(AngularGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001), Color(red: 0.437, green: 0.911, blue: 1.001)]), center: .center, startAngle: .zero, endAngle: .degrees(360)), style: StrokeStyle(lineWidth: 15, lineCap: .round, lineJoin: .round))
                             .rotationEffect(.degrees(90))
                         .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
                             .frame(width: 250,height: 250)
@@ -137,10 +142,8 @@ struct PersonalWalks: View {
                         }
                         .padding(.horizontal, 15.0)
                     }
-
-                    
-                    
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis vestibulum turpis eu interdum. Vivamus vel fermentum nisl. Donec quis felis nec eros pretium vulputate. Proin rutrum ullamcorper risus, eget suscipit odio sollicitudin id. Sed id libero convallis, viverra neque et, venenatis ex." )
+    
+                    Text("Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves steplike movement, including walking, running, stair-climbing, cross- country skiing, and even movement as you go about your daily chores." )
                         .foregroundColor(Color.white)
                         .padding()
                     
@@ -173,8 +176,9 @@ struct PersonalWalks: View {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 200, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 200, height: 30)
                                         //.clipShape(Capsule())
                                     Text("15,342").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
@@ -183,32 +187,36 @@ struct PersonalWalks: View {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 189, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 189, height: 30)
                                     Text("14,238").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 140, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 140, height: 30)
                                     Text("14,132").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 120, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 120, height: 30)
                                     Text("13,923").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 97, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 97, height: 30)
                                     Text("12,293").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 
@@ -216,31 +224,34 @@ struct PersonalWalks: View {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 85, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 85, height: 30)
                                     Text("10,130").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 75, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 75, height: 30)
                                     Text("9,609").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
                                     //fill
-                                    Capsule().frame(width: 50, height: 30)
-                                        .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
+                                    Capsule()
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
+                                        .frame(width: 50, height: 30)
                                     Text("6,874").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                             }
                         }
                     }
                 }
-            }.navigationBarColor(.gray, textColor: .white)
+            }.navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
             .navigationBarTitle("Walks")
     }
 }
@@ -249,6 +260,7 @@ struct PersonalWalks: View {
 struct PersonalWalks_Previews: PreviewProvider {
     static var previews: some View {
         PersonalWalks(/*viewModel: WeatherViewModel(weatherService: WeatherService())*/)
+        
     }
 }
 
