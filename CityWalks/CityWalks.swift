@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CityWalks.swift
 //  CityWalks
 //
 //  Created by Josh Hart on 18/03/2022.
@@ -8,26 +8,35 @@ import SwiftUI
 import UIKit
 import SwiftUICharts
 
-
-
-struct PersonalWalks: View {
+struct CityWalks: View {
     
     /*
     @ObservedObject var viewModel: WeatherViewModel
     public var PageName = "City"
     */
-    
+     
     @State var show = false
-    //@State public var username: username
-    
-    //@EnvironmentObject var info: UserInfo
-    
-    /*
     @State private var showNavView = false
     @State private var showModalView = false
-     
+    @ObservedObject var viewModel: WeatherViewModel
     
-    init() {
+    /*
+    let navBar = self.navigationController!.navigationBar
+
+    let standardAppearance = UINavigationBarAppearance()
+    standardAppearance.configureWithOpaqueBackground()
+    standardAppearance.backgroundImage = backImageForDefaultBarMetrics
+
+    let compactAppearance = standardAppearance.copy()
+    compactAppearance.backgroundImage = backImageForLandscapePhoneBarMetrics
+
+    navBar.standardAppearance = standardAppearance
+    navBar.scrollEdgeAppearance = standardAppearance
+    navBar.compactAppearance = compactAppearance
+    */
+    
+    /*
+    public init(viewModel: WeatherViewModel) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.systemBackground]
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.systemBackground]
@@ -37,35 +46,59 @@ struct PersonalWalks: View {
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().tintColor = UIColor.systemBackground
+        
+        @ObservedObject var viewModel: WeatherViewModel
     }
     */
+    
     /*
     init(){
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(Color())]
     }
     */
     
+    @State private var navigateTo: AnyView?
+    @State private var isActive = false
+    
     var body: some View {
+        //NavigationView{
             ZStack {
-                Color(red: 0.228, green: 0.228, blue: 0.228).edgesIgnoringSafeArea(.all)
+                Color(red: 0.165, green: 0.165, blue: 0.165).edgesIgnoringSafeArea(.all)
                 ScrollView {
                     Text(" ")
                         .foregroundColor(.white)
                         .padding(.top, 5.0)
+                        .foregroundColor(.white)
+                        
                         .environment(\.colorScheme, .dark)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    navigateTo = AnyView (PersonalWalks())
+                                    isActive = true
+                                }, label: {
+                                    Label(
+                                        title: { Text("PersonalWalks") },
+                                        icon: { Image(systemName: "person") }
+                                    )
+                                })
                                 /*Menu {
-                                    Button(action: {}, label: {
+                                    Button(action: {
+                                        navigateTo = AnyView (PersonalWalks())
+                                        isActive = true
+                                    }, label: {
                                         Label(
                                             title: { Text("PersonalWalks") },
                                             icon: { Image(systemName: "person") }
                                         )
                                     })
-                                    Button(action: {}, label: {
+                                    Button(action: {
+                                        navigateTo = AnyView (ContentView())
+                                        isActive = true
+                                    }, label: {
                                         Label(
                                             title: { Text("CityWalks") },
-                                            icon: { Image(systemName: "person") }
+                                            icon: { Image(systemName: "person.3") }
                                         )
                                     })
                                 } label : {
@@ -75,12 +108,16 @@ struct PersonalWalks: View {
                                         
                                     )
                                 }*/
+                                .background(
+                                    NavigationLink(destination: self.navigateTo, isActive: $isActive) {
+                                        //EmptyView()
+                                    })
                             }
                         }
                     ZStack {
                         Circle()
                             .trim(from: show ? 0.5 : 0.25, to: 1) //0.1 = closer to 100 percent
-                            .stroke(Color(red: 0.349, green: 0.893, blue: 0.926), style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                            .stroke(Color(red: 0.438, green: 0.862, blue: 1.0), style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                             .rotationEffect(.degrees(90))
                         .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
                             .frame(width: 250,height: 250)
@@ -90,19 +127,19 @@ struct PersonalWalks: View {
                                 self.show.toggle()
                         }
                         VStack{
-                            Text("name")
+                            Text(viewModel.cityName)
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .frame(width: 100.0, height: 5.0)
-                            Text("7,567")
+                            Text("19,002,349")
                                 .font(.largeTitle)
-                                .foregroundColor(Color(red: 0.35, green: 0.893, blue: 0.926))
+                                .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
                                 .padding(.bottom, 10.0)
                         }
-                        Text("Goal")
+                        Text("Active Users")
                             .foregroundColor(.white)
                             .padding(.top, 125.0)
-                        Text("10,000")
+                        Text("1,040")
                             .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.652))
                             .padding(.top, 165.0)
                     }
@@ -110,15 +147,15 @@ struct PersonalWalks: View {
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack {
                             BarChartView(data: ChartData(values: [
-                                ("Mon", 558),
-                                ("Tue", 732),
-                                ("Wed", 844),
-                                ("Thur", 283),
-                                ("Fri", 150),
-                                ("Sat", 342),
-                                ("Sun", 820),
+                                ("Mon", 5508),
+                                ("Tue", 7320),
+                                ("Wed", 8044),
+                                ("Thur", 2803),
+                                ("Fri", 1050),
+                                ("Sat", 3402),
+                                ("Sun", 8200),
                             ]),
-                                         title: "Bar Chart", // name of chart
+                                         title: "Daily Steps", // name of chart
                                          style: Styles.barChartStyleNeonBlueLight, //color style
                                          form: ChartForm.extraLarge, // decides size of slide
                                          dropShadow: false, //removes drop shadow
@@ -126,8 +163,8 @@ struct PersonalWalks: View {
                             ).padding(.top, 20.0)
                                 .padding(.trailing,10.0)
                             //line chart
-                            LineChartView(data: [12,32,21,24,23,19],
-                                          title: "Line Chart",
+                            LineChartView(data: [0,104,240,204,230,190],
+                                          title: "Hourly Steps",
                                           style: Styles.barChartStyleNeonBlueLight, //color style
                                           form: ChartForm.extraLarge, // decides size of slide
                                           dropShadow: false, //removes drop shadow
@@ -140,10 +177,10 @@ struct PersonalWalks: View {
 
                     
                     
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis vestibulum turpis eu interdum. Vivamus vel fermentum nisl. Donec quis felis nec eros pretium vulputate. Proin rutrum ullamcorper risus, eget suscipit odio sollicitudin id. Sed id libero convallis, viverra neque et, venenatis ex." )
+                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis vestibulum turpis eu interdum. Vivamus vel fermentum nisl. Donec quis felis nec eros pretium vulputate. Proin rutrum ullamcorper risus, eget suscipit odio sollicitudin id. Sed id libero convallis, viverra neque et, venenatis ex. Suspendisse ornare, arcu nec eleifend blandit, velit erat varius est, quis ornare mi eros in erat.")
                         .foregroundColor(Color.white)
                         .padding()
-                    
+
                     Text("Leaderboard")
                         .font(.title)
                         .fontWeight(.bold)
@@ -159,14 +196,14 @@ struct PersonalWalks: View {
                             .frame(width: 365, height: 330)
                         HStack{
                             VStack(alignment: .leading){
-                                    Text("Lucy").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                    Text("Dan").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                    Text("Jess").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                    Text("Kieran").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                    Text("username").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                    Text("Grace").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                    Text("Liam").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                    Text("Ellie").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text("London").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text("Bristol").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text("Bath").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text("Newquay").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text("Edinbourgh").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text("Cardiff").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text("Newport").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text("Swindon").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                             }
                             VStack{
                                 ZStack(alignment: .leading) {
@@ -176,7 +213,7 @@ struct PersonalWalks: View {
                                     Capsule().frame(width: 200, height: 30)
                                         .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
                                         //.clipShape(Capsule())
-                                    Text("15,342").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("20,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 
                                 ZStack(alignment: .leading) {
@@ -185,7 +222,7 @@ struct PersonalWalks: View {
                                     //fill
                                     Capsule().frame(width: 189, height: 30)
                                         .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
-                                    Text("14,238").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("19,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
@@ -193,7 +230,7 @@ struct PersonalWalks: View {
                                     //fill
                                     Capsule().frame(width: 140, height: 30)
                                         .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
-                                    Text("14,132").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("15,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
@@ -201,7 +238,7 @@ struct PersonalWalks: View {
                                     //fill
                                     Capsule().frame(width: 120, height: 30)
                                         .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
-                                    Text("13,923").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("13,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
@@ -209,7 +246,7 @@ struct PersonalWalks: View {
                                     //fill
                                     Capsule().frame(width: 97, height: 30)
                                         .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
-                                    Text("12,293").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("12,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 
                                 ZStack(alignment: .leading) {
@@ -218,7 +255,7 @@ struct PersonalWalks: View {
                                     //fill
                                     Capsule().frame(width: 85, height: 30)
                                         .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
-                                    Text("10,130").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("10,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
@@ -226,7 +263,7 @@ struct PersonalWalks: View {
                                     //fill
                                     Capsule().frame(width: 75, height: 30)
                                         .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
-                                    Text("9,609").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("9,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
@@ -234,21 +271,43 @@ struct PersonalWalks: View {
                                     //fill
                                     Capsule().frame(width: 50, height: 30)
                                         .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
-                                    Text("6,874").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("6,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                             }
                         }
                     }
-                }
+                    //.padding(.all, 8.0)
+                        //.background(Color.gray)
+                        //.cornerRadius(15)
+                        
+                    /*
+                    BarChartView(data: ChartData(values: [
+                        ("Bristol", 20000200),
+                        ("Bath", 18000200),
+                        ("London", 15000200),
+                        ("Torquay", 14000200),
+                        ("Newquay", 13000200),
+                        ("Cardiff", 10000200),
+                        ("Plymouth", 7000200),
+                    ]),
+                                 title: "", // name of chart
+                                 style: Styles.barChartStyleNeonBlueLight, //color style
+                                 form: ChartForm.extraLarge, // decides size of slide
+                                 dropShadow: false, //removes drop shadow
+                                 valueSpecifier: "%.0f" //removes .0 values
+                    ).padding(.vertical, 60.0).rotationEffect(.degrees(90))*/
+                }.onAppear(perform: viewModel.refresh)
             }.navigationBarColor(.gray, textColor: .white)
-            .navigationBarTitle("Walks")
+                .navigationBarTitle("\(viewModel.cityName) Walks")
+                //.navigationBarHidden(true)
+        //}
     }
 }
 
 
-struct PersonalWalks_Previews: PreviewProvider {
+struct CityWalks_Previews: PreviewProvider {
     static var previews: some View {
-        PersonalWalks(/*viewModel: WeatherViewModel(weatherService: WeatherService())*/)
+        CityWalks(viewModel: WeatherViewModel(weatherService: WeatherService()))
     }
 }
 

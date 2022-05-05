@@ -18,8 +18,10 @@
 		AF0B97C727E4C5CA00703A81 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0B97C627E4C5CA00703A81 /* WeatherViewModel.swift */; };
 		AF12F07128005F5B00562712 /* PersonalWalks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12F07028005F5A00562712 /* PersonalWalks.swift */; };
 		AF8C402927EE061F002FE9F8 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = AF8C402827EE061F002FE9F8 /* SwiftUICharts */; };
+		AF910AD028205231004A3F05 /* CityWalks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF910ACF28205231004A3F05 /* CityWalks.swift */; };
 		AF962EFC281C27B8003878A6 /* ContentViewWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */; };
 		AF962EFE281C3457003878A6 /* NavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF962EFD281C3457003878A6 /* NavigationModifier.swift */; };
+		AFDF12A6281F12E9005B8AA6 /* Username.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF12A5281F12E9005B8AA6 /* Username.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +56,10 @@
 		AF0B97C427E4C44000703A81 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		AF0B97C627E4C5CA00703A81 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		AF12F07028005F5A00562712 /* PersonalWalks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalWalks.swift; sourceTree = "<group>"; };
+		AF910ACF28205231004A3F05 /* CityWalks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWalks.swift; sourceTree = "<group>"; };
 		AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewWeather.swift; sourceTree = "<group>"; };
 		AF962EFD281C3457003878A6 /* NavigationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifier.swift; sourceTree = "<group>"; };
+		AFDF12A5281F12E9005B8AA6 /* Username.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Username.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,14 +112,16 @@
 			isa = PBXGroup;
 			children = (
 				AF0B97BF27E4C1E800703A81 /* Info.plist */,
-				AF0B979527E4AEAA00703A81 /* CityWalksApp.swift */,
 				AF0B979727E4AEAA00703A81 /* ContentView.swift */,
-				AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */,
+				AFDF12A5281F12E9005B8AA6 /* Username.swift */,
+				AF910ACF28205231004A3F05 /* CityWalks.swift */,
 				AF12F07028005F5A00562712 /* PersonalWalks.swift */,
+				AF0B979527E4AEAA00703A81 /* CityWalksApp.swift */,
+				AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */,
 				AF0B97C027E4C2AA00703A81 /* WeatherService.swift */,
-				AF962EFD281C3457003878A6 /* NavigationModifier.swift */,
 				AF0B97C627E4C5CA00703A81 /* WeatherViewModel.swift */,
 				AF0B97C427E4C44000703A81 /* Weather.swift */,
+				AF962EFD281C3457003878A6 /* NavigationModifier.swift */,
 				AF0B979927E4AEAB00703A81 /* Assets.xcassets */,
 				AF0B979B27E4AEAB00703A81 /* Preview Content */,
 			);
@@ -283,12 +289,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF0B97C127E4C2AA00703A81 /* WeatherService.swift in Sources */,
+				AF910AD028205231004A3F05 /* CityWalks.swift in Sources */,
 				AF0B97C727E4C5CA00703A81 /* WeatherViewModel.swift in Sources */,
 				AF962EFE281C3457003878A6 /* NavigationModifier.swift in Sources */,
 				AF12F07128005F5B00562712 /* PersonalWalks.swift in Sources */,
 				AF962EFC281C27B8003878A6 /* ContentViewWeather.swift in Sources */,
 				AF0B979827E4AEAA00703A81 /* ContentView.swift in Sources */,
 				AF0B979627E4AEAA00703A81 /* CityWalksApp.swift in Sources */,
+				AFDF12A6281F12E9005B8AA6 /* Username.swift in Sources */,
 				AF0B97C527E4C44100703A81 /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -431,7 +439,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -462,7 +470,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -497,7 +505,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
