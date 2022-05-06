@@ -12,10 +12,19 @@ import SwiftUICharts
     @Published var name = ""
 }
 
+@MainActor class UStep: ObservableObject{
+    @Published var usersteps = 7_367
+}
+
+@MainActor class CStep: ObservableObject{
+    @Published var citysteps = 19_002_349
+}
 
 struct ContentView: View {
     
     @StateObject var user = User()
+    @StateObject var usteps = UStep()
+    @StateObject var csteps = CStep()
     /*
     @ObservedObject var viewModel: WeatherViewModel
     public var PageName = "City"
@@ -36,6 +45,8 @@ struct ContentView: View {
     var body: some View {
         Username(viewModel: WeatherViewModel(weatherService: WeatherService()))
             .environmentObject(user)
+            .environmentObject(usteps)
+            .environmentObject(csteps)
     }
 }
 

@@ -20,6 +20,7 @@ struct CityWalks: View {
     @State private var showModalView = false
     @ObservedObject var viewModel: WeatherViewModel
     
+    @EnvironmentObject var csteps: CStep
     /*
     let navBar = self.navigationController!.navigationBar
 
@@ -137,7 +138,7 @@ struct CityWalks: View {
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .frame(width: 100.0, height: 5.0)
-                            Text("19,002,349")
+                            Text("\(csteps.citysteps)")
                                 .font(.largeTitle)
                                 .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
                                 .padding(.bottom, 10.0)
@@ -228,7 +229,7 @@ struct CityWalks: View {
                                     Capsule()
                                         .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
                                         .frame(width: 180, height: 30)
-                                    Text("19,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("\(csteps.citysteps)").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
@@ -309,7 +310,8 @@ struct CityWalks: View {
                                  valueSpecifier: "%.0f" //removes .0 values
                     ).padding(.vertical, 60.0).rotationEffect(.degrees(90))*/
                 }.onAppear(perform: viewModel.refresh)
-            }.navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
+            }.environmentObject(csteps)
+            .navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
                 .navigationBarTitle("\(viewModel.cityName) Walks")
                 //.navigationBarHidden(true)
         //}

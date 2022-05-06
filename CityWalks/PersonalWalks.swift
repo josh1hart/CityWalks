@@ -8,8 +8,6 @@ import SwiftUI
 import UIKit
 import SwiftUICharts
 
-
-
 struct PersonalWalks: View {
     
     /*
@@ -23,7 +21,7 @@ struct PersonalWalks: View {
     //global name
     //@StateObject var user = User()
     @EnvironmentObject var user: User
-    
+    @EnvironmentObject var usteps: UStep
     /*
     @State private var showNavView = false
     @State private var showModalView = false
@@ -101,7 +99,7 @@ struct PersonalWalks: View {
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .frame(width: 100.0, height: 5.0)
-                            Text("7,567")
+                            Text("\(usteps.usersteps)")
                                 .font(.largeTitle)
                                 .foregroundColor(Color(red: 0.35, green: 0.893, blue: 0.926))
                                 .padding(.bottom, 10.0)
@@ -167,9 +165,9 @@ struct PersonalWalks: View {
                                     Text("Dan").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Jess").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Kieran").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                Text(user.name).fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                    Text("Grace").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Liam").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text("Grace").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                    Text(user.name).fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Ellie").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                             }
                             VStack{
@@ -218,7 +216,7 @@ struct PersonalWalks: View {
                                     Capsule()
                                         .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
                                         .frame(width: 97, height: 30)
-                                    Text("12,293").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("7,487").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 
                                 ZStack(alignment: .leading) {
@@ -237,7 +235,7 @@ struct PersonalWalks: View {
                                     Capsule()
                                         .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
                                         .frame(width: 75, height: 30)
-                                    Text("9,609").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
+                                    Text("\(usteps.usersteps)").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
@@ -253,6 +251,7 @@ struct PersonalWalks: View {
                     }
                 }
             }.environmentObject(user)
+            .environmentObject(usteps)
             .navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
             .navigationBarTitle("\(user.name) Walks")
     }
