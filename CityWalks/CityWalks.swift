@@ -151,7 +151,7 @@ struct CityWalks: View {
                     }.padding(.bottom, 20.0)
                         .padding(.top, 5.0)
                     //Bar Chart
-                    ScrollView(.horizontal, showsIndicators: false){
+                    ScrollView(.horizontal, showsIndicators: true){
                         HStack {
                             BarChartView(data: ChartData(values: [
                                 ("Mon", 5508),

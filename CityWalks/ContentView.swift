@@ -8,8 +8,14 @@ import SwiftUI
 import UIKit
 import SwiftUICharts
 
+@MainActor class User: ObservableObject{
+    @Published var name = ""
+}
+
+
 struct ContentView: View {
     
+    @StateObject var user = User()
     /*
     @ObservedObject var viewModel: WeatherViewModel
     public var PageName = "City"
@@ -29,7 +35,7 @@ struct ContentView: View {
     
     var body: some View {
         Username(viewModel: WeatherViewModel(weatherService: WeatherService()))
-
+            .environmentObject(user)
     }
 }
 

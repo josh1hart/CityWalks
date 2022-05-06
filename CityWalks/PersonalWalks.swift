@@ -18,9 +18,11 @@ struct PersonalWalks: View {
     */
     
     @State var show = false
-    //@State public var username: username
     
-    //@EnvironmentObject var info: UserInfo
+    
+    //global name
+    //@StateObject var user = User()
+    @EnvironmentObject var user: User
     
     /*
     @State private var showNavView = false
@@ -95,7 +97,7 @@ struct PersonalWalks: View {
                                 self.show.toggle()
                         }
                         VStack{
-                            Text("name")
+                            Text(user.name)
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .frame(width: 100.0, height: 5.0)
@@ -110,9 +112,10 @@ struct PersonalWalks: View {
                         Text("10,000")
                             .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.652))
                             .padding(.top, 165.0)
-                    }
+                    }.padding(.bottom, 20.0)
+                        .padding(.top, 5.0)
                     //Bar Chart
-                    ScrollView(.horizontal, showsIndicators: false){
+                    ScrollView(.horizontal, showsIndicators: true){
                         HStack {
                             BarChartView(data: ChartData(values: [
                                 ("Mon", 558),
@@ -166,7 +169,7 @@ struct PersonalWalks: View {
                                     Text("Dan").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Jess").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Kieran").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
-                                    Text("username").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                Text(user.name).fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Grace").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Liam").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Ellie").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
@@ -251,8 +254,9 @@ struct PersonalWalks: View {
                         }
                     }
                 }
-            }.navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
-            .navigationBarTitle("Walks")
+            }.environmentObject(user)
+            .navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
+            .navigationBarTitle("\(user.name) Walks")
     }
 }
 
@@ -260,7 +264,6 @@ struct PersonalWalks: View {
 struct PersonalWalks_Previews: PreviewProvider {
     static var previews: some View {
         PersonalWalks(/*viewModel: WeatherViewModel(weatherService: WeatherService())*/)
-        
     }
 }
 

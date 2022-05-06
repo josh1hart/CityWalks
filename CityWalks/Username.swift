@@ -9,13 +9,17 @@ import SwiftUI
 import UIKit
 
 /*
-@MainActor class User: ObservableObject {
-    @Published var name = "Test"
+@MainActor class User: ObservableObject{
+    @Published var name = "Test Username"
 }
 */
 
 struct Username: View {
-    @State public var username: String = ""
+    //@State public var username: String = ""
+    
+    //@StateObject var user = User()
+    @EnvironmentObject var user: User
+    
     @State private var isActive = false
     
     @State var show = false
@@ -23,7 +27,6 @@ struct Username: View {
     @State private var showModalView = false
     @ObservedObject var viewModel: WeatherViewModel
 
-    //@EnvironmentObject var user: User
 
     var body: some View {
             NavigationView{
@@ -34,15 +37,15 @@ struct Username: View {
                                         .font(.largeTitle)
                                         .fontWeight(.semibold)
                                         .foregroundColor(Color.white)
-                                        .padding(.bottom, 20)
+                                        .padding(.bottom, 50)
                         VStack(alignment: .leading) {
-                            Text("Username \(username)")
+                            Text("Username")
                                 .font(.callout)
                                 .foregroundColor(Color.white)
                                 .bold()
                             TextField(
                                             "Enter username...",
-                                            text: ($username),
+                                            text: (self.$user.name),
                                             onEditingChanged: { (isBegin) in
                                                 if isBegin {
                                                     print("Begins editing")
@@ -61,8 +64,12 @@ struct Username: View {
                         
                         NavigationLink(destination: CityWalks(viewModel: WeatherViewModel(weatherService: WeatherService()))) {
                             Text("Enter")
-                                .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
-                            }
+                                .foregroundColor(Color.white)
+                                .padding(.all, 10.0)
+                                .foregroundColor(.white)
+                                .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing), style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round)))
+                                //.overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001), Color(red: 0.437, green: 0.911, blue: 1.001)]), startPoint: .leading, endPoint: .trailing)))
+                        }.padding(.top, 20.0)
                         /*
                          Button(action: {
                              navigateTo = AnyView (PersonalWalks())
@@ -81,11 +88,17 @@ struct Username: View {
                         }
                         */
                         
-                    }//.environmentObject(user)
+                        Image("StartScreen")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .padding(.top, 50.0)
+                        
+                    }.padding(.top, 5.0)
+                    //.environmentObject(user)
                     .navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
                     .navigationBarTitle("Username")
                     .navigationBarHidden(true)
-                }
+                }//.environmentObject(user)
             }
     }
 }
