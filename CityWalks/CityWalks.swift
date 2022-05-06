@@ -21,6 +21,7 @@ struct CityWalks: View {
     @ObservedObject var viewModel: WeatherViewModel
     
     @EnvironmentObject var csteps: CStep
+    
     /*
     let navBar = self.navigationController!.navigationBar
 

@@ -21,6 +21,7 @@
 		AF910AD028205231004A3F05 /* CityWalks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF910ACF28205231004A3F05 /* CityWalks.swift */; };
 		AF962EFC281C27B8003878A6 /* ContentViewWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */; };
 		AF962EFE281C3457003878A6 /* NavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF962EFD281C3457003878A6 /* NavigationModifier.swift */; };
+		AFB56E4E2825BD2E0084103D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB56E4D2825BD2E0084103D /* HealthKit.framework */; };
 		AFDF12A6281F12E9005B8AA6 /* Username.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF12A5281F12E9005B8AA6 /* Username.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,8 @@
 		AF910ACF28205231004A3F05 /* CityWalks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWalks.swift; sourceTree = "<group>"; };
 		AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewWeather.swift; sourceTree = "<group>"; };
 		AF962EFD281C3457003878A6 /* NavigationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifier.swift; sourceTree = "<group>"; };
+		AFB56E4B2825BD2E0084103D /* CityWalks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CityWalks.entitlements; sourceTree = "<group>"; };
+		AFB56E4D2825BD2E0084103D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		AFDF12A5281F12E9005B8AA6 /* Username.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Username.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF8C402927EE061F002FE9F8 /* SwiftUICharts in Frameworks */,
+				AFB56E4E2825BD2E0084103D /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +99,7 @@
 				AF0B97A527E4AEAC00703A81 /* CityWalksTests */,
 				AF0B97AF27E4AEAC00703A81 /* CityWalksUITests */,
 				AF0B979327E4AEAA00703A81 /* Products */,
+				AFB56E4C2825BD2E0084103D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +116,7 @@
 		AF0B979427E4AEAA00703A81 /* CityWalks */ = {
 			isa = PBXGroup;
 			children = (
+				AFB56E4B2825BD2E0084103D /* CityWalks.entitlements */,
 				AF0B97BF27E4C1E800703A81 /* Info.plist */,
 				AF0B979727E4AEAA00703A81 /* ContentView.swift */,
 				AFDF12A5281F12E9005B8AA6 /* Username.swift */,
@@ -150,6 +156,14 @@
 				AF0B97B027E4AEAC00703A81 /* CityWalksUITests.swift */,
 			);
 			path = CityWalksUITests;
+			sourceTree = "<group>";
+		};
+		AFB56E4C2825BD2E0084103D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFB56E4D2825BD2E0084103D /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CityWalks/CityWalks.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CityWalks/Preview Content\"";
@@ -489,6 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CityWalks/CityWalks.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CityWalks/Preview Content\"";
