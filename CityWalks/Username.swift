@@ -62,14 +62,27 @@ struct Username: View {
                                 //.textFieldStyle(RoundedBorderTextFieldStyle())
                         }.padding()
                         
-                        NavigationLink(destination: CityWalks(viewModel: WeatherViewModel(weatherService: WeatherService()))) {
-                            Text("Enter")
-                                .foregroundColor(Color.white)
-                                .padding(.all, 10.0)
-                                .foregroundColor(.white)
-                                .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing), style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round)))
-                                //.overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001), Color(red: 0.437, green: 0.911, blue: 1.001)]), startPoint: .leading, endPoint: .trailing)))
+                        if user.name.isEmpty {
+                            ZStack {
+                                Text("Enter")
+                                    .foregroundColor(Color.gray)
+                                    .padding(.top, 20.0)
+                                Capsule()
+                                    .stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing), style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
+                                    .frame(width: 60, height: 40)
+                                    .padding(.top, 20.0)
+                            }
+                        } else {
+                            NavigationLink(destination: CityWalks(viewModel: WeatherViewModel(weatherService: WeatherService()))) {
+                                Text("Enter")
+                                    .foregroundColor(Color.white)
+                                    .padding(.all, 10.0)
+                                    .foregroundColor(.white)
+                                    .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing), style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round)))
                         }.padding(.top, 20.0)
+                        
+                                //.overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001), Color(red: 0.437, green: 0.911, blue: 1.001)]), startPoint: .leading, endPoint: .trailing)))
+                        }
                         /*
                          Button(action: {
                              navigateTo = AnyView (PersonalWalks())
@@ -89,9 +102,10 @@ struct Username: View {
                         */
                         
                         Image("StartScreen")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .padding(.top, 50.0)
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                                //.scaledToFit()
+                                .padding(.top, 200.0)
                         
                     }.padding(.top, 5.0)
                     //.environmentObject(user)

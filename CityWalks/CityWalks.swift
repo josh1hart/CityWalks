@@ -151,43 +151,39 @@ struct CityWalks: View {
                     }.padding(.bottom, 20.0)
                         .padding(.top, 5.0)
                     //Bar Chart
-                    ScrollView(.horizontal, showsIndicators: true){
-                        HStack {
-                            BarChartView(data: ChartData(values: [
-                                ("Mon", 5508),
-                                ("Tue", 7320),
-                                ("Wed", 8044),
-                                ("Thur", 2803),
-                                ("Fri", 1050),
-                                ("Sat", 3402),
-                                ("Sun", 8200),
-                            ]),
-                                         title: "Daily Steps", // name of chart
-                                         style: Styles.barChartStyleNeonBlueLight, //color style
-                                         form: ChartForm.extraLarge, // decides size of slide
-                                         dropShadow: false, //removes drop shadow
-                                         valueSpecifier: "%.0f" //removes .0 values
-                            ).padding(.top, 20.0)
-                                .padding(.trailing,10.0)
-                            //line chart
-                            LineChartView(data: [0,104,240,204,230,190],
-                                          title: "Hourly Steps",
-                                          style: Styles.barChartStyleNeonBlueLight, //color style
-                                          form: ChartForm.extraLarge, // decides size of slide
-                                          dropShadow: false, //removes drop shadow
-                                          valueSpecifier: "%.0f"
-                            ).padding(.top, 20.0)
-                            .padding(.leading, 20.0)
-                        }
-                        .padding(.horizontal, 15.0)
-                    }
-
+                    ScrollView(showsIndicators: true){
+                            VStack(spacing: 0) {
+                                BarChartView(data: ChartData(values: [
+                                    ("Mon", 5508),
+                                    ("Tue", 7320),
+                                    ("Wed", 8044),
+                                    ("Thur", 2803),
+                                    ("Fri", 1050),
+                                    ("Sat", 3402),
+                                    ("Sun", 8200),
+                                ]),
+                                             title: "Daily Steps", // name of chart
+                                             style: Styles.barChartStyleNeonBlueLight, //color style
+                                             form: ChartForm.extraLarge, // decides size of slide
+                                             dropShadow: false, //removes drop shadow
+                                             valueSpecifier: "%.0f" //removes .0 values
+                                )//.padding(.top, 20.0)
+                                    //.padding(.trailing,10.0)
+                                Text("Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves steplike movement, including walking, running, stair-climbing, cross- country skiing, and even movement as you go about your daily chores.")
+                                    .foregroundColor(Color.white)
+                                    .padding()
+                                //line chart
+                                LineChartView(data: [0,104,240,204,230,190],
+                                              title: "Hourly Steps",
+                                              style: Styles.barChartStyleNeonBlueLight, //color style
+                                              form: ChartForm.extraLarge, // decides size of slide
+                                              dropShadow: false, //removes drop shadow
+                                              valueSpecifier: "%.0f"
+                                ).padding(.top, 5)
+                            }
+                    }.padding(.bottom, 10.0)
                     
                     
-                    Text("Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves steplike movement, including walking, running, stair-climbing, cross- country skiing, and even movement as you go about your daily chores.")
-                        .foregroundColor(Color.white)
-                        .padding()
-
                     Text("Leaderboard")
                         .font(.title)
                         .fontWeight(.bold)
@@ -202,7 +198,7 @@ struct CityWalks: View {
                             .fill(Color.white)
                             .frame(width: 365, height: 330)
                         HStack{
-                            VStack(alignment: .leading){
+                            VStack(alignment: .trailing){
                                     Text("London").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Bristol").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Bath").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)

@@ -115,8 +115,8 @@ struct PersonalWalks: View {
                     }.padding(.bottom, 20.0)
                         .padding(.top, 5.0)
                     //Bar Chart
-                    ScrollView(.horizontal, showsIndicators: true){
-                        HStack {
+                    ScrollView(showsIndicators: true){
+                        VStack(spacing: 0) {
                             BarChartView(data: ChartData(values: [
                                 ("Mon", 558),
                                 ("Tue", 732),
@@ -126,29 +126,27 @@ struct PersonalWalks: View {
                                 ("Sat", 342),
                                 ("Sun", 820),
                             ]),
-                                         title: "Bar Chart", // name of chart
+                                         title: "Daily Steps", // name of chart
                                          style: Styles.barChartStyleNeonBlueLight, //color style
                                          form: ChartForm.extraLarge, // decides size of slide
                                          dropShadow: false, //removes drop shadow
                                          valueSpecifier: "%.0f" //removes .0 values
-                            ).padding(.top, 20.0)
-                                .padding(.trailing,10.0)
+                            )//.padding(.top, 20.0)
+                                //.padding(.trailing,10.0)
+                            Text("Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves steplike movement, including walking, running, stair-climbing, cross- country skiing, and even movement as you go about your daily chores." )
+                                .foregroundColor(Color.white)
+                                .padding()
                             //line chart
                             LineChartView(data: [12,32,21,24,23,19],
-                                          title: "Line Chart",
+                                          title: "Hourly Steps",
                                           style: Styles.barChartStyleNeonBlueLight, //color style
                                           form: ChartForm.extraLarge, // decides size of slide
                                           dropShadow: false, //removes drop shadow
                                           valueSpecifier: "%.0f"
-                            ).padding(.top, 20.0)
-                            .padding(.leading, 20.0)
+                            ).padding(.top, 5.0)
                         }
-                        .padding(.horizontal, 15.0)
-                    }
-    
-                    Text("Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves steplike movement, including walking, running, stair-climbing, cross- country skiing, and even movement as you go about your daily chores." )
-                        .foregroundColor(Color.white)
-                        .padding()
+                    }.padding(.bottom, 10.0)
+
                     
                     Text("Leaderboard")
                         .font(.title)
@@ -164,7 +162,7 @@ struct PersonalWalks: View {
                             .fill(Color.white)
                             .frame(width: 365, height: 330)
                         HStack{
-                            VStack(alignment: .leading){
+                            VStack(alignment: .trailing){
                                     Text("Lucy").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Dan").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Jess").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
