@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import HealthKit
 
 @main
 struct CityWalksApp: App {
@@ -16,7 +17,11 @@ struct CityWalksApp: App {
             let weatherService = WeatherService()
             let viewModel = WeatherViewModel(weatherService: weatherService)
             
-            ContentView(viewModel: viewModel)
+            
+            let healthStore = HealthStore()
+            let stepviewModel = StepViewModel(healthStore: healthStore)
+            
+            ContentView(viewModel: WeatherViewModel(weatherService: WeatherService()), stepviewModel: StepViewModel(healthStore: HealthStore()))
         }
     }
 }

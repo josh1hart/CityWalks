@@ -7,8 +7,26 @@
 import SwiftUI
 import UIKit
 import SwiftUICharts
+import HealthKit
 
 struct CityWalks: View {
+    
+    /*
+    static let dateFormatter: DateFormatter = {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM"
+        return formatter
+        
+    }()
+    
+    
+    let steps: [Step]
+    
+    var totalSteps: Int {
+        steps.map { $0.count }.reduce(0,+)
+    }
+    */
     
     /*
     @ObservedObject var viewModel: WeatherViewModel
@@ -19,7 +37,8 @@ struct CityWalks: View {
     @State private var showNavView = false
     @State private var showModalView = false
     @ObservedObject var viewModel: WeatherViewModel
-    
+    @ObservedObject var stepviewModel: StepViewModel
+    //@State private var steps: [Step] = [Step]()
     @EnvironmentObject var csteps: CStep
     
     /*
@@ -58,6 +77,7 @@ struct CityWalks: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(Color())]
     }
     */
+    
     
     @State private var navigateTo: AnyView?
     @State private var isActive = false
@@ -290,6 +310,8 @@ struct CityWalks: View {
                             }
                         }
                     }
+                    //Text("Total Steps: \(totalSteps)")
+                    
                     //.padding(.all, 8.0)
                         //.background(Color.gray)
                         //.cornerRadius(15)
@@ -322,7 +344,7 @@ struct CityWalks: View {
 
 struct CityWalks_Previews: PreviewProvider {
     static var previews: some View {
-        CityWalks(viewModel: WeatherViewModel(weatherService: WeatherService()))
+        CityWalks(viewModel: WeatherViewModel(weatherService: WeatherService()), stepviewModel: StepViewModel(healthStore: HealthStore()))
     }
 }
 

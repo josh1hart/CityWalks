@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import HealthKit
 
 /*
 @MainActor class User: ObservableObject{
@@ -19,6 +20,7 @@ struct Username: View {
     
     //@StateObject var user = User()
     @EnvironmentObject var user: User
+    @EnvironmentObject var testhealthStore: SampleObject
     
     @State private var isActive = false
     
@@ -26,9 +28,11 @@ struct Username: View {
     @State private var showNavView = false
     @State private var showModalView = false
     @ObservedObject var viewModel: WeatherViewModel
-
+    @ObservedObject var stepviewModel: StepViewModel
 
     var body: some View {
+        //@StateObject var testhealthStore = SampleObject()
+        
             NavigationView{
                 ZStack {
                     Color(red: 0.165, green: 0.165, blue: 0.165).edgesIgnoringSafeArea(.all)
@@ -73,7 +77,7 @@ struct Username: View {
                                     .padding(.top, 20.0)
                             }
                         } else {
-                            NavigationLink(destination: CityWalks(viewModel: WeatherViewModel(weatherService: WeatherService()))) {
+                            NavigationLink(destination: CityWalks(viewModel: WeatherViewModel(weatherService: WeatherService()), stepviewModel: StepViewModel(healthStore: HealthStore()))) {
                                 Text("Enter")
                                     .foregroundColor(Color.white)
                                     .padding(.all, 10.0)
@@ -107,11 +111,32 @@ struct Username: View {
                                 //.scaledToFit()
                                 .padding(.top, 200.0)
                         
-                    }.padding(.top, 5.0)
+                    }
+                    .environmentObject(testhealthStore)
+                   
+                    /*
+                    .onAppear {
+                        if let healthStore = healthStore {
+                            healthStore.requestAuthorization { success in
+                                if success {
+                                    healthStore.calculateSteps { statisticsCollection in
+                                        if let statisticsCollection = statisticsCollection {
+                                            // update the UI
+                                            updateUIFromStatistics(statisticsCollection)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    */
+                     
+                    .padding(.top, 5.0)
                     //.environmentObject(user)
                     .navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
                     .navigationBarTitle("Username")
                     .navigationBarHidden(true)
+                    
                 }//.environmentObject(user)
             }
     }
@@ -119,6 +144,6 @@ struct Username: View {
 
 struct Username_Previews: PreviewProvider {
     static var previews: some View {
-        Username(viewModel: WeatherViewModel(weatherService: WeatherService()))
+        Username(viewModel: WeatherViewModel(weatherService: WeatherService()), stepviewModel: StepViewModel(healthStore: HealthStore()))
     }
 }

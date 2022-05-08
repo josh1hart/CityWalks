@@ -7,6 +7,7 @@
 import SwiftUI
 import UIKit
 import SwiftUICharts
+import HealthKit
 
 struct PersonalWalks: View {
     
