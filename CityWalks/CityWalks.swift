@@ -27,11 +27,6 @@ struct CityWalks: View {
         steps.map { $0.count }.reduce(0,+)
     }
     */
-    
-    /*
-    @ObservedObject var viewModel: WeatherViewModel
-    public var PageName = "City"
-    */
      
     @State var show = false
     @State private var showNavView = false
@@ -40,59 +35,16 @@ struct CityWalks: View {
     @ObservedObject var stepviewModel: StepViewModel
     //@State private var steps: [Step] = [Step]()
     @EnvironmentObject var csteps: CStep
-    
-    /*
-    let navBar = self.navigationController!.navigationBar
-
-    let standardAppearance = UINavigationBarAppearance()
-    standardAppearance.configureWithOpaqueBackground()
-    standardAppearance.backgroundImage = backImageForDefaultBarMetrics
-
-    let compactAppearance = standardAppearance.copy()
-    compactAppearance.backgroundImage = backImageForLandscapePhoneBarMetrics
-
-    navBar.standardAppearance = standardAppearance
-    navBar.scrollEdgeAppearance = standardAppearance
-    navBar.compactAppearance = compactAppearance
-    */
-    
-    /*
-    public init(viewModel: WeatherViewModel) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.systemBackground]
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.systemBackground]
-        navBarAppearance.backgroundColor = UIColor.gray
-        navBarAppearance.shadowColor = .clear
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().tintColor = UIColor.systemBackground
-        
-        @ObservedObject var viewModel: WeatherViewModel
-    }
-    */
-    
-    /*
-    init(){
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(Color())]
-    }
-    */
-    
-    
     @State private var navigateTo: AnyView?
     @State private var isActive = false
     
-    //let chartStyle = ChartStyle(backgroundColor: Color.black, accentColor: Colors.OrangeStart, secondGradientColor: Colors.OrangeEnd, chartFormSize: ChartForm.medium, textColor: Color.white, legendTextColor: Color.white )
-    
     var body: some View {
-        //NavigationView{
             ZStack {
                 Color(red: 0.165, green: 0.165, blue: 0.165).edgesIgnoringSafeArea(.all)
                 ScrollView {
                     Text(" ")
                         .foregroundColor(.white)
                         .padding(.top, 5.0)
-                        .foregroundColor(.white)
                         .environment(\.colorScheme, .dark)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
@@ -105,7 +57,9 @@ struct CityWalks: View {
                                         icon: { Image(systemName: "person") }
                                     )
                                 })
-                                /*Menu {
+                                //Below menu was not used, ux deamed pressing the button twice a pointless extra step
+                                /*
+                                 Menu {
                                     Button(action: {
                                         navigateTo = AnyView (PersonalWalks())
                                         isActive = true
@@ -130,21 +84,18 @@ struct CityWalks: View {
                                         icon: {Image(systemName: "plus")}
                                         
                                     )
-                                }*/
+                                }
+                                 */
                                 .background(
                                     NavigationLink(destination: self.navigateTo, isActive: $isActive) {
-                                        //EmptyView()
                                     })
                             }
                         }
                     ZStack {
+                        //created a stroked circle for creating the animated ring
                         Circle()
                             .trim(from: show ? 0.5 : 0.25, to: 1) //0.1 = closer to 100 percent
-                            //.strokeBorder(
-                                    //AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center, startAngle: .zero, endAngle: .degrees(360)),
-                                    //lineWidth: 50
-                                //)
-                            //.stroke(Color(red: 0.438, green: 0.862, blue: 1.0), style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                        //angular gradient that follows the ring
                             .stroke(AngularGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001), Color(red: 0.437, green: 0.911, blue: 1.001)]), center: .center, startAngle: .zero, endAngle: .degrees(360)), style: StrokeStyle(lineWidth: 15, lineCap: .round, lineJoin: .round))
                             .rotationEffect(.degrees(90))
                         .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
@@ -154,11 +105,14 @@ struct CityWalks: View {
                             .onTapGesture{
                                 self.show.toggle()
                         }
+                        //infomation inside the ring
                         VStack{
+                            //title city
                             Text(viewModel.cityName)
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .frame(width: 100.0, height: 5.0)
+                            //the citys steps
                             Text("\(csteps.citysteps)")
                                 .font(.largeTitle)
                                 .foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
@@ -189,12 +143,11 @@ struct CityWalks: View {
                                              form: ChartForm.extraLarge, // decides size of slide
                                              dropShadow: false, //removes drop shadow
                                              valueSpecifier: "%.0f" //removes .0 values
-                                )//.padding(.top, 20.0)
-                                    //.padding(.trailing,10.0)
+                                )
                                 Text("Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves steplike movement, including walking, running, stair-climbing, cross- country skiing, and even movement as you go about your daily chores.")
                                     .foregroundColor(Color.white)
                                     .padding()
-                                //line chart
+                                //Line chart
                                 LineChartView(data: [0,104,240,204,230,190],
                                               title: "Hourly Steps",
                                               style: Styles.barChartStyleNeonBlueLight, //color style
@@ -202,28 +155,28 @@ struct CityWalks: View {
                                               dropShadow: false, //removes drop shadow
                                               valueSpecifier: "%.0f"
                                 ).padding(.top, 5)
+                                //create a hourly legend for the chart
                                 ZStack {
-                                    
                                     HStack{
                                         Capsule().frame(width: 365, height: 30)
                                             .foregroundColor(Color.white/*(hue: 0.674, saturation: 0.028, brightness: 0.906)*/)
                                     }.padding(.top, 10)
-                                    
+                                    //create a hstack for listing the hours
                                     HStack{
-                                        Text("7am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                        Text("9am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                        Text("11am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                        Text("1pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                        Text("3pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                        Text("5pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                        Text("7pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                        Text("9pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                        Text("7am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                        Text("9am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                        Text("11am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                        Text("1pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                        Text("3pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                        Text("5pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                        Text("7pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                        Text("9pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
                                     }
                                 }
                             }
                     }.padding(.bottom, 10.0)
                     
-                    
+                    //Start of leaderboard section
                     Text("Leaderboard")
                         .font(.title)
                         .fontWeight(.bold)
@@ -233,11 +186,14 @@ struct CityWalks: View {
                         .padding(.leading, 17)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
+                    //start of leaderboard
                     ZStack {
+                        //background card
                         RoundedRectangle(cornerRadius: 25)
                             .fill(Color.white)
                             .frame(width: 365, height: 330)
                         HStack{
+                            //list of city names
                             VStack(alignment: .trailing){
                                     Text("London").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Bristol").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
@@ -249,15 +205,15 @@ struct CityWalks: View {
                                     Text("Cambridge").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                             }
                             VStack{
+                                //Progress bars starting with gray unfilled bars
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
-                                    //fill
+                                    //filled bar
                                     Capsule()
                                         .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
                                         .frame(width: 210, height: 30)
-                                        //.foregroundColor(Color(red: 0.438, green: 0.862, blue: 1.0))
-                                        //.clipShape(Capsule())
+                                    //Text steps
                                     Text("20,002,349").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 
@@ -268,6 +224,7 @@ struct CityWalks: View {
                                     Capsule()
                                         .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
                                         .frame(width: 180, height: 30)
+                                    //uses global for the users city steps
                                     Text("\(csteps.citysteps)").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
                                 ZStack(alignment: .leading) {
@@ -328,37 +285,15 @@ struct CityWalks: View {
                             }
                         }
                     }
+                    //ex code for trying to print total Steps from a new view
                     //Text("Total Steps: \(totalSteps)")
-                    
-                    //.padding(.all, 8.0)
-                        //.background(Color.gray)
-                        //.cornerRadius(15)
-                        
-                    /*
-                    BarChartView(data: ChartData(values: [
-                        ("Bristol", 20000200),
-                        ("Bath", 18000200),
-                        ("London", 15000200),
-                        ("Torquay", 14000200),
-                        ("Newquay", 13000200),
-                        ("Cardiff", 10000200),
-                        ("Plymouth", 7000200),
-                    ]),
-                                 title: "", // name of chart
-                                 style: Styles.barChartStyleNeonBlueLight, //color style
-                                 form: ChartForm.extraLarge, // decides size of slide
-                                 dropShadow: false, //removes drop shadow
-                                 valueSpecifier: "%.0f" //removes .0 values
-                    ).padding(.vertical, 60.0).rotationEffect(.degrees(90))*/
                 }.onAppear(perform: viewModel.refresh)
             }.environmentObject(csteps)
             .navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
                 .navigationBarTitle("\(viewModel.cityName) Walks")
                 //.navigationBarHidden(true)
-        //}
     }
 }
-
 
 struct CityWalks_Previews: PreviewProvider {
     static var previews: some View {

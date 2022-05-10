@@ -20,10 +20,8 @@
 		AF2D569B2826CA8B0008904F /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D569A2826CA8B0008904F /* HealthStore.swift */; };
 		AF2D56AB2826FF2F0008904F /* StepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D56AA2826FF2F0008904F /* StepViewModel.swift */; };
 		AF2D56E1282703E30008904F /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D56E0282703E30008904F /* Step.swift */; };
-		AF2D56E5282728F60008904F /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D56E4282728F60008904F /* GraphView.swift */; };
 		AF8C402927EE061F002FE9F8 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = AF8C402827EE061F002FE9F8 /* SwiftUICharts */; };
 		AF910AD028205231004A3F05 /* CityWalks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF910ACF28205231004A3F05 /* CityWalks.swift */; };
-		AF962EFC281C27B8003878A6 /* ContentViewWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */; };
 		AF962EFE281C3457003878A6 /* NavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF962EFD281C3457003878A6 /* NavigationModifier.swift */; };
 		AFB56E4E2825BD2E0084103D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB56E4D2825BD2E0084103D /* HealthKit.framework */; };
 		AFDF12A6281F12E9005B8AA6 /* Username.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF12A5281F12E9005B8AA6 /* Username.swift */; };
@@ -64,9 +62,7 @@
 		AF2D569A2826CA8B0008904F /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		AF2D56AA2826FF2F0008904F /* StepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewModel.swift; sourceTree = "<group>"; };
 		AF2D56E0282703E30008904F /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
-		AF2D56E4282728F60008904F /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		AF910ACF28205231004A3F05 /* CityWalks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWalks.swift; sourceTree = "<group>"; };
-		AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewWeather.swift; sourceTree = "<group>"; };
 		AF962EFD281C3457003878A6 /* NavigationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifier.swift; sourceTree = "<group>"; };
 		AFB56E4B2825BD2E0084103D /* CityWalks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CityWalks.entitlements; sourceTree = "<group>"; };
 		AFB56E4D2825BD2E0084103D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -131,11 +127,9 @@
 				AF910ACF28205231004A3F05 /* CityWalks.swift */,
 				AF12F07028005F5A00562712 /* PersonalWalks.swift */,
 				AFDF12A5281F12E9005B8AA6 /* Username.swift */,
-				AF2D56E4282728F60008904F /* GraphView.swift */,
 				AF2D56A72826D9CA0008904F /* Steps */,
 				AF2D56A62826D9980008904F /* Weather */,
 				AF962EFD281C3457003878A6 /* NavigationModifier.swift */,
-				AF962EFB281C27B8003878A6 /* ContentViewWeather.swift */,
 				AF0B979927E4AEAB00703A81 /* Assets.xcassets */,
 				AF0B979B27E4AEAB00703A81 /* Preview Content */,
 			);
@@ -335,11 +329,9 @@
 				AF0B97C727E4C5CA00703A81 /* WeatherViewModel.swift in Sources */,
 				AF962EFE281C3457003878A6 /* NavigationModifier.swift in Sources */,
 				AF12F07128005F5B00562712 /* PersonalWalks.swift in Sources */,
-				AF962EFC281C27B8003878A6 /* ContentViewWeather.swift in Sources */,
 				AF2D56AB2826FF2F0008904F /* StepViewModel.swift in Sources */,
 				AF0B979827E4AEAA00703A81 /* ContentView.swift in Sources */,
 				AF0B979627E4AEAA00703A81 /* CityWalksApp.swift in Sources */,
-				AF2D56E5282728F60008904F /* GraphView.swift in Sources */,
 				AFDF12A6281F12E9005B8AA6 /* Username.swift in Sources */,
 				AF0B97C527E4C44100703A81 /* Weather.swift in Sources */,
 				AF2D56E1282703E30008904F /* Step.swift in Sources */,

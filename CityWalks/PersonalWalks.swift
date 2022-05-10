@@ -10,44 +10,15 @@ import SwiftUICharts
 import HealthKit
 
 struct PersonalWalks: View {
-    
-    /*
-    @ObservedObject var viewModel: WeatherViewModel
-    public var PageName = "City"
-    */
-    
     @State var show = false
     
-    
     //global name
-    //@StateObject var user = User()
     @EnvironmentObject var user: User
     @EnvironmentObject var usteps: UStep
-    /*
-    @State private var showNavView = false
-    @State private var showModalView = false
-     
-    
-    init() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.systemBackground]
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.systemBackground]
-        navBarAppearance.backgroundColor = UIColor.gray
-        navBarAppearance.shadowColor = .clear
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().tintColor = UIColor.systemBackground
-    }
-    */
-    /*
-    init(){
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(Color())]
-    }
-    */
     
     var body: some View {
             ZStack {
+                //background colour
                 Color(red: 0.165, green: 0.165, blue: 0.165).edgesIgnoringSafeArea(.all)
                 ScrollView {
                     Text(" ")
@@ -56,6 +27,8 @@ struct PersonalWalks: View {
                         .environment(\.colorScheme, .dark)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
+                                
+                                //ex sub menu can be reimplemented for a chance to have multiple pages
                                 /*Menu {
                                     Button(action: {}, label: {
                                         Label(
@@ -78,14 +51,11 @@ struct PersonalWalks: View {
                                 }*/
                             }
                         }
+                    
+                    //Ring creation
                     ZStack {
                         Circle()
                             .trim(from: show ? 0.5 : 0.25, to: 1) //0.1 = closer to 100 percent
-                            //.strokeBorder(
-                                    //AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center, startAngle: .zero, endAngle: .degrees(360)),
-                                    //lineWidth: 50
-                                //)
-                            //.stroke(Color(red: 0.438, green: 0.862, blue: 1.0), style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                             .stroke(AngularGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001), Color(red: 0.437, green: 0.911, blue: 1.001)]), center: .center, startAngle: .zero, endAngle: .degrees(360)), style: StrokeStyle(lineWidth: 15, lineCap: .round, lineJoin: .round))
                             .rotationEffect(.degrees(90))
                         .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
@@ -95,11 +65,14 @@ struct PersonalWalks: View {
                             .onTapGesture{
                                 self.show.toggle()
                         }
+                        //text inside the ring
                         VStack{
+                            //the user global name var
                             Text(user.name)
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .frame(width: 100.0, height: 5.0)
+                            //user steps
                             Text("\(usteps.usersteps)")
                                 .font(.largeTitle)
                                 .foregroundColor(Color(red: 0.35, green: 0.893, blue: 0.926))
@@ -130,12 +103,11 @@ struct PersonalWalks: View {
                                          form: ChartForm.extraLarge, // decides size of slide
                                          dropShadow: false, //removes drop shadow
                                          valueSpecifier: "%.0f" //removes .0 values
-                            )//.padding(.top, 20.0)
-                                //.padding(.trailing,10.0)
+                            )
                             Text("Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can help you determine your step count. These devices count steps for any activity that involves steplike movement, including walking, running, stair-climbing, cross- country skiing, and even movement as you go about your daily chores." )
                                 .foregroundColor(Color.white)
                                 .padding()
-                            //line chart
+                            //Line chart
                             LineChartView(data: [12,32,21,24,23,19],
                                           title: "Hourly Steps",
                                           style: Styles.barChartStyleNeonBlueLight, //color style
@@ -143,28 +115,29 @@ struct PersonalWalks: View {
                                           dropShadow: false, //removes drop shadow
                                           valueSpecifier: "%.0f"
                             ).padding(.top, 5.0)
+                            //line chart hourly legend
                             ZStack {
-                                
                                 HStack{
+                                    //background
                                     Capsule().frame(width: 365, height: 30)
-                                        .foregroundColor(Color.white/*(hue: 0.674, saturation: 0.028, brightness: 0.906)*/)
+                                        .foregroundColor(Color.white)
                                 }.padding(.top, 10)
-                                
+                                //listed hours
                                 HStack{
-                                    Text("7am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                    Text("9am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                    Text("11am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                    Text("1pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                    Text("3pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                    Text("5pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                    Text("7pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
-                                    Text("9pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                    Text("7am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                    Text("9am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                    Text("11am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                    Text("1pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                    Text("3pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                    Text("5pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                    Text("7pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
+                                    Text("9pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 8)
                                 }
                             }
                         }
                     }.padding(.bottom, 10.0)
 
-                    
+                    //title leaderboard section
                     Text("Leaderboard")
                         .font(.title)
                         .fontWeight(.bold)
@@ -175,10 +148,12 @@ struct PersonalWalks: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     ZStack {
+                        //leaderboard background card
                         RoundedRectangle(cornerRadius: 25)
                             .fill(Color.white)
                             .frame(width: 365, height: 330)
                         HStack{
+                            //list of usernames
                             VStack(alignment: .trailing){
                                     Text("Lucy").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Dan").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
@@ -186,21 +161,23 @@ struct PersonalWalks: View {
                                     Text("Kieran").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Liam").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Grace").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
+                                //username inputted used here
                                     Text(user.name).fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                                     Text("Ellie").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.vertical, 5)
                             }
+                            //creation of progress bars
                             VStack{
                                 ZStack(alignment: .leading) {
+                                    //grayed out bar
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
-                                    //fill
+                                    //filled out progress bar
                                     Capsule()
                                         .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.437, green: 0.911, blue: 1.001), Color(red: 0.479, green: 0.466, blue: 1.001)]), startPoint: .leading, endPoint: .trailing))
                                         .frame(width: 200, height: 30)
                                         //.clipShape(Capsule())
                                     Text("15,342").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.leading, 20.0)
                                 }
-                                
                                 ZStack(alignment: .leading) {
                                     Capsule().frame(width: 230, height: 30)
                                         .foregroundColor(Color(hue: 0.674, saturation: 0.028, brightness: 0.906))
@@ -269,8 +246,10 @@ struct PersonalWalks: View {
                         }
                     }
                 }
-            }.environmentObject(user)
+            }//init global vars with this view
+            .environmentObject(user)
             .environmentObject(usteps)
+        //colour nav bar elements
             .navigationBarColor(UIColor(Color(red: 0.483, green: 0.47, blue: 0.997)), textColor: .white)
             .navigationBarTitle("\(user.name) Walks")
     }

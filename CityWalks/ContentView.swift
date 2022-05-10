@@ -9,51 +9,21 @@ import UIKit
 import SwiftUICharts
 import HealthKit
 
-//import CoreMotion
-/* 
-let healthStore = HKHealthStore()
-
-func getTodaysSteps(completion: @escaping (Double) -> Void) {
-    let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-    
-    let now = Date()
-    let startOfDay = Calendar.current.startOfDay(for: now)
-    let predicate = HKQuery.predicateForSamples(
-        withStart: startOfDay,
-        end: now,
-        options: .strictStartDate
-    )
-    
-    let query = HKStatisticsQuery(
-        quantityType: stepsQuantityType,
-        quantitySamplePredicate: predicate,
-        options: .cumulativeSum
-    ) { _, result, _ in
-        guard let result = result, let sum = result.sumQuantity() else {
-            completion(0.0)
-            return
-        }
-        completion(sum.doubleValue(for: HKUnit.count()))
-    }
-    
-    healthStore.execute(query)
-}
-*/
-//let pedometer = CMPedometer()
-
+//Global Var's
+//Username
 @MainActor class User: ObservableObject{
     @Published var name = ""
 }
-
+//Users Steps
 @MainActor class UStep: ObservableObject{
     @Published var usersteps = 7_367
 }
-
+//Users City Steps
 @MainActor class CStep: ObservableObject{
     @Published var citysteps = 19_002_349
 }
 
-
+//global object for initializing health store
 class SampleObject: ObservableObject {
     @Published var healthStore = HealthStore()
 }
@@ -61,21 +31,11 @@ class SampleObject: ObservableObject {
 struct ContentView: View {
     
     //pedo start
-    
     @StateObject var testhealthStore = SampleObject()
-    
-    
+
     public var healthStore: HealthStore?
     @State public var steps: [Step] = [Step]()
-    
-    
-    /*
-    public init() {
-        healthStore = HealthStore()
-    }
-    */
                
-    
     public func updateUIFromStatistics(_ statisticsCollection: HKStatisticsCollection) {
         
         let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
@@ -88,48 +48,40 @@ struct ContentView: View {
             let step = Step(count: Int(count ?? 0), date: statistics.startDate)
             steps.append(step)
         }
-        
     }
-    
     //pedd end
     
+    //Stating the globalised var's
     @StateObject var user = User()
     @StateObject var usteps = UStep()
     @StateObject var csteps = CStep()
-    /*
-    @ObservedObject var viewModel: WeatherViewModel
-    public var PageName = "City"
-    */
      
     @State var show = false
     @State private var showNavView = false
     @State private var showModalView = false
     @ObservedObject var viewModel: WeatherViewModel
     @ObservedObject var stepviewModel: StepViewModel
-    //@ObservedObject var stepviewModel: StepViewModel
     
     @State private var navigateTo: AnyView?
     @State private var isActive = false
     
-    
+    //totalSteps caluclated from step array
+    //This can be printed but currently cannot authrise healthkit
     var totalSteps: Int {
         steps.map { $0.count }.reduce(0,+)
     }
-    //Username Global Var
-    
-    
+
     //@StateObject var UserInfo = UserInfo()
     
     var body: some View {
         VStack {
             
             Username(viewModel: WeatherViewModel(weatherService: WeatherService()), stepviewModel: StepViewModel(healthStore: HealthStore()))
-            //Text("Total Steps: \(totalSteps)").padding()
                 .environmentObject(user)
                 .environmentObject(usteps)
                 .environmentObject(csteps)
                 .environmentObject(testhealthStore)
-            //pedo start
+            //pedo start, below can print total steps
             //Text("Test: \(testhealthStore.healthStore)")
             //Text("Total Steps: \(totalSteps)")//.padding()
                 
@@ -154,6 +106,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        //this creates a step array allowing the preview show data without a similator
         let steps = [
                    Step(count: 3452, date: Date()),
                    Step(count: 123, date: Date()),
