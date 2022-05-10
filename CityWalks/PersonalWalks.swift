@@ -143,6 +143,24 @@ struct PersonalWalks: View {
                                           dropShadow: false, //removes drop shadow
                                           valueSpecifier: "%.0f"
                             ).padding(.top, 5.0)
+                            ZStack {
+                                
+                                HStack{
+                                    Capsule().frame(width: 365, height: 30)
+                                        .foregroundColor(Color.white/*(hue: 0.674, saturation: 0.028, brightness: 0.906)*/)
+                                }.padding(.top, 10)
+                                
+                                HStack{
+                                    Text("7am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                    Text("9am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                    Text("11am").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                    Text("1pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                    Text("3pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                    Text("5pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                    Text("7pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                    Text("9pm").fontWeight(.bold).foregroundColor(Color(red: 0.165, green: 0.165, blue: 0.165)).padding(.top, 6)
+                                }
+                            }
                         }
                     }.padding(.bottom, 10.0)
 

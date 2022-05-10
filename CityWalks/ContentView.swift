@@ -10,7 +10,7 @@ import SwiftUICharts
 import HealthKit
 
 //import CoreMotion
-/*
+/* 
 let healthStore = HKHealthStore()
 
 func getTodaysSteps(completion: @escaping (Double) -> Void) {
@@ -52,6 +52,7 @@ func getTodaysSteps(completion: @escaping (Double) -> Void) {
 @MainActor class CStep: ObservableObject{
     @Published var citysteps = 19_002_349
 }
+
 
 class SampleObject: ObservableObject {
     @Published var healthStore = HealthStore()
@@ -147,19 +148,7 @@ struct ContentView: View {
                 }
             }
         }
-        
-        
         //pedo end
-        
-        /*
-            .onAppear{
-                if let healthStore = healthStore {
-                    healthStore.requestAuthorization{ success in
-                        
-                    }
-                }
-            }
-         */
     }
 }
 
@@ -175,43 +164,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(steps: steps, viewModel: WeatherViewModel(weatherService: WeatherService()), stepviewModel: StepViewModel(healthStore: HealthStore()))
     }
 }
-
-
-
-
-/*
-let navBar = self.navigationController!.navigationBar
-
-let standardAppearance = UINavigationBarAppearance()
-standardAppearance.configureWithOpaqueBackground()
-standardAppearance.backgroundImage = backImageForDefaultBarMetrics
-
-let compactAppearance = standardAppearance.copy()
-compactAppearance.backgroundImage = backImageForLandscapePhoneBarMetrics
-
-navBar.standardAppearance = standardAppearance
-navBar.scrollEdgeAppearance = standardAppearance
-navBar.compactAppearance = compactAppearance
-*/
-
-/*
-public init(viewModel: WeatherViewModel) {
-    let navBarAppearance = UINavigationBarAppearance()
-    navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.systemBackground]
-    navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.systemBackground]
-    navBarAppearance.backgroundColor = UIColor.gray
-    navBarAppearance.shadowColor = .clear
-    UINavigationBar.appearance().standardAppearance = navBarAppearance
-    UINavigationBar.appearance().compactAppearance = navBarAppearance
-    UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-    UINavigationBar.appearance().tintColor = UIColor.systemBackground
-    
-    @ObservedObject var viewModel: WeatherViewModel
-}
-*/
-
-/*
-init(){
-    UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(Color())]
-}
-*/

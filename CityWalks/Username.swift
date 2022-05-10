@@ -20,7 +20,7 @@ struct Username: View {
     
     //@StateObject var user = User()
     @EnvironmentObject var user: User
-    @EnvironmentObject var testhealthStore: SampleObject
+    //@EnvironmentObject var testhealthStore: SampleObject
     
     @State private var isActive = false
     
@@ -112,7 +112,7 @@ struct Username: View {
                                 .padding(.top, 200.0)
                         
                     }
-                    .environmentObject(testhealthStore)
+                    //.environmentObject(testhealthStore)
                    
                     /*
                     .onAppear {
